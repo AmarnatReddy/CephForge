@@ -1,0 +1,99 @@
+{
+  "execution_id": "exec_20260121_213246_72da53e4",
+  "started_at": "2026-01-21 21:32:46.086870",
+  "completed_at": "2026-01-21 21:33:03.342997",
+  "duration_seconds": 17.256127,
+  "overall_status": "passed_with_warnings",
+  "can_proceed": true,
+  "cluster_health": null,
+  "cluster_checks": [],
+  "clients_total": 2,
+  "clients_online": 1,
+  "clients_offline": 1,
+  "client_results": [
+    {
+      "client_id": "rgw-client1",
+      "hostname": "10.64.25.62",
+      "ip_address": "10.64.25.62",
+      "status": "online",
+      "ssh_reachable": true,
+      "ssh_latency_ms": 5784.158945083618,
+      "agent_running": true,
+      "agent_version": "1.0.0",
+      "agent_pid": 46450,
+      "uptime_seconds": 909093,
+      "load_average": [
+        0.04,
+        0.03,
+        0.0
+      ],
+      "memory_total_gb": 1.6642341613769531,
+      "memory_available_gb": 1.0987968444824219,
+      "disk_space_gb": 8.345779418945312,
+      "tools_installed": {
+        "fio": false,
+        "iperf3": false,
+        "dd": true,
+        "iostat": false,
+        "ping": true
+      },
+      "storage_accessible": false,
+      "mount_points": [],
+      "network_to_storage_ms": 0.196,
+      "errors": [],
+      "warnings": [
+        "Tool 'fio' not installed",
+        "Tool 'iperf3' not installed",
+        "Tool 'iostat' not installed"
+      ]
+    },
+    {
+      "client_id": "rgw-client2",
+      "hostname": "10.64.25.58",
+      "ip_address": "10.64.25.58",
+      "status": "error",
+      "ssh_reachable": true,
+      "ssh_latency_ms": 5781.153917312622,
+      "agent_running": false,
+      "agent_version": null,
+      "agent_pid": null,
+      "uptime_seconds": 908688,
+      "load_average": [
+        0.0,
+        0.01,
+        0.0
+      ],
+      "memory_total_gb": 1.6642379760742188,
+      "memory_available_gb": 1.1691169738769531,
+      "disk_space_gb": 8.569488525390625,
+      "tools_installed": {
+        "fio": false,
+        "iperf3": false,
+        "dd": true,
+        "iostat": false,
+        "ping": true
+      },
+      "storage_accessible": false,
+      "mount_points": [],
+      "network_to_storage_ms": 0.216,
+      "errors": [
+        "Agent not running or not responding"
+      ],
+      "warnings": [
+        "Tool 'fio' not installed",
+        "Tool 'iperf3' not installed",
+        "Tool 'iostat' not installed"
+      ]
+    }
+  ],
+  "excluded_clients": [
+    "rgw-client2"
+  ],
+  "custom_command_results": [],
+  "network_baseline": null,
+  "warnings": [
+    "[Client] 10.64.25.58: error"
+  ],
+  "blocking_issues": [],
+  "proceed_message": "Can proceed with 1 warning(s)"
+}

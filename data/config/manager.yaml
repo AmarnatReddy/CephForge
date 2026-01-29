@@ -1,0 +1,36 @@
+# Scale Framework Manager Configuration
+# Environment variables override these settings
+
+# Application settings
+app:
+  name: "Scale Testing Framework"
+  debug: false
+
+# Server settings
+server:
+  host: "0.0.0.0"
+  port: 8000
+
+# Redis messaging
+redis:
+  url: "redis://localhost:6379"
+
+# Agent settings
+agent:
+  heartbeat_interval: 5  # seconds
+  heartbeat_timeout: 30  # seconds
+
+# Execution settings
+execution:
+  default_metrics_interval: 1  # seconds
+  max_concurrent_executions: 1  # single executor
+
+# Precheck settings
+prechecks:
+  ssh_timeout: 10  # seconds
+  command_timeout: 60  # seconds
+
+# Logging
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

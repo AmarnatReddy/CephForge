@@ -1,0 +1,223 @@
+{
+  "execution_id": "exec_20260122_194605_2d33fbcf",
+  "started_at": "2026-01-22 19:46:05.911241",
+  "completed_at": "2026-01-22 19:47:43.075161",
+  "duration_seconds": 97.16392,
+  "overall_status": "passed_with_warnings",
+  "can_proceed": true,
+  "cluster_health": "HEALTH_WARN",
+  "cluster_checks": [
+    {
+      "name": "cluster_health",
+      "passed": true,
+      "severity": "warning",
+      "message": "Cluster health is WARN: 3 issues",
+      "details": {
+        "status": "HEALTH_WARN",
+        "checks": {
+          "OSDMAP_FLAGS": {
+            "severity": "HEALTH_WARN",
+            "summary": {
+              "message": "noscrub,nodeep-scrub flag(s) set",
+              "count": 20
+            },
+            "muted": false
+          },
+          "PG_NOT_DEEP_SCRUBBED": {
+            "severity": "HEALTH_WARN",
+            "summary": {
+              "message": "1 pgs not deep-scrubbed in time",
+              "count": 1
+            },
+            "muted": false
+          },
+          "PG_NOT_SCRUBBED": {
+            "severity": "HEALTH_WARN",
+            "summary": {
+              "message": "33 pgs not scrubbed in time",
+              "count": 33
+            },
+            "muted": false
+          }
+        }
+      },
+      "raw_output": null
+    },
+    {
+      "name": "osd_status",
+      "passed": true,
+      "severity": "info",
+      "message": "All 56 OSDs are up and in",
+      "details": {
+        "total": 56,
+        "up": 56,
+        "in": 56
+      },
+      "raw_output": null
+    },
+    {
+      "name": "mon_quorum",
+      "passed": true,
+      "severity": "warning",
+      "message": "Monitor quorum maintained (3/0)",
+      "details": {
+        "quorum": [
+          "grim061",
+          "grim062",
+          "grim063"
+        ]
+      },
+      "raw_output": null
+    },
+    {
+      "name": "pg_status",
+      "passed": true,
+      "severity": "info",
+      "message": "All 3249 PGs are active+clean",
+      "details": {
+        "total_pgs": 3249
+      },
+      "raw_output": null
+    },
+    {
+      "name": "capacity",
+      "passed": true,
+      "severity": "info",
+      "message": "Cluster capacity: 14.4% used",
+      "details": {
+        "total_tb": 48.904296875,
+        "used_percent": 14.41422114381204
+      },
+      "raw_output": null
+    },
+    {
+      "name": "mgr_status",
+      "passed": true,
+      "severity": "warning",
+      "message": "No active MGR daemon detected (cluster may still be functional)",
+      "details": {},
+      "raw_output": null
+    }
+  ],
+  "clients_total": 3,
+  "clients_online": 3,
+  "clients_offline": 0,
+  "client_results": [
+    {
+      "client_id": "rgw-client1",
+      "hostname": "10.64.25.62",
+      "ip_address": "10.64.25.62",
+      "status": "online",
+      "ssh_reachable": true,
+      "ssh_latency_ms": 5428.173780441284,
+      "agent_running": true,
+      "agent_version": "1.0.0",
+      "agent_pid": 46450,
+      "uptime_seconds": 989172,
+      "load_average": [
+        0.0,
+        0.0,
+        0.04
+      ],
+      "memory_total_gb": 1.6642341613769531,
+      "memory_available_gb": 1.0959739685058594,
+      "disk_space_gb": 8.257400512695312,
+      "tools_installed": {
+        "fio": true,
+        "iperf3": true,
+        "dd": true,
+        "iostat": false,
+        "ping": true
+      },
+      "storage_accessible": false,
+      "mount_points": [],
+      "network_to_storage_ms": 0.197,
+      "errors": [],
+      "warnings": [
+        "Tool 'iostat' not installed"
+      ]
+    },
+    {
+      "client_id": "rgw-client2",
+      "hostname": "10.64.25.58",
+      "ip_address": "10.64.25.58",
+      "status": "online",
+      "ssh_reachable": true,
+      "ssh_latency_ms": 5427.862644195557,
+      "agent_running": true,
+      "agent_version": "1.0.0",
+      "agent_pid": 40354,
+      "uptime_seconds": 988767,
+      "load_average": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "memory_total_gb": 1.6642379760742188,
+      "memory_available_gb": 1.1244888305664062,
+      "disk_space_gb": 8.561668395996094,
+      "tools_installed": {
+        "fio": false,
+        "iperf3": false,
+        "dd": true,
+        "iostat": false,
+        "ping": true
+      },
+      "storage_accessible": false,
+      "mount_points": [],
+      "network_to_storage_ms": 0.23,
+      "errors": [],
+      "warnings": [
+        "FIO not installed (will be auto-installed during execution)",
+        "Tool 'iperf3' not installed",
+        "Tool 'iostat' not installed"
+      ]
+    },
+    {
+      "client_id": "rgw-client3",
+      "hostname": "10.64.24.171",
+      "ip_address": "10.64.24.171",
+      "status": "online",
+      "ssh_reachable": true,
+      "ssh_latency_ms": 5425.337791442871,
+      "agent_running": true,
+      "agent_version": "1.0.0",
+      "agent_pid": 39531,
+      "uptime_seconds": 1187629,
+      "load_average": [
+        0.02,
+        0.03,
+        0.0
+      ],
+      "memory_total_gb": 1.6642341613769531,
+      "memory_available_gb": 1.1590843200683594,
+      "disk_space_gb": 8.565982818603516,
+      "tools_installed": {
+        "fio": false,
+        "iperf3": false,
+        "dd": true,
+        "iostat": false,
+        "ping": true
+      },
+      "storage_accessible": false,
+      "mount_points": [],
+      "network_to_storage_ms": 0.165,
+      "errors": [],
+      "warnings": [
+        "FIO not installed (will be auto-installed during execution)",
+        "Tool 'iperf3' not installed",
+        "Tool 'iostat' not installed"
+      ]
+    }
+  ],
+  "excluded_clients": [],
+  "custom_command_results": [],
+  "network_baseline": null,
+  "warnings": [
+    "[Cluster] cluster_health: Cluster health is WARN: 3 issues",
+    "[Cluster] mon_quorum: Monitor quorum maintained (3/0)",
+    "[Cluster] mgr_status: No active MGR daemon detected (cluster may still be functional)"
+  ],
+  "blocking_issues": [],
+  "proceed_message": "Can proceed with 3 warning(s)"
+}

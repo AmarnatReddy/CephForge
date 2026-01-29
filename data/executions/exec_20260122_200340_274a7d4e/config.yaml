@@ -1,0 +1,56 @@
+clients:
+  client_ids:
+  - rgw-client1
+  mode: specific
+cluster_name: grim
+description: ''
+fio_extra_options: {}
+io:
+  block_size: 4m
+  direct_io: true
+  io_depth: 1
+  num_jobs: 12
+  pattern: random
+  read_percent: 100
+  sync_io: false
+  verify_data: false
+  write_percent: 0
+mount:
+  auto_unmount: true
+  cephfs_path: /
+  cephfs_user: admin
+  filesystem_type: cephfs
+  gluster_servers: []
+  mount_method: kernel
+  mount_options: ''
+  mount_point: /mnt/scale_test
+  nfs_version: '4.1'
+name: fs2
+network_baseline:
+  aggregate_bandwidth_gbps: 60.6060606060606
+  avg_latency_ms: 0.165
+  bottleneck: none_detected
+  client_count: 3
+  estimated_achievable_throughput_mbps: 51515.15151515151
+  max_theoretical_throughput_mbps: 60606.0606060606
+  recommended_block_size: 4m
+  recommended_io_depth: 2
+  recommended_num_jobs: 4
+prechecks:
+  client_health: true
+  cluster_health: true
+  custom_commands: []
+  enabled: true
+  exclude_failed_clients: true
+  fail_on_health_err: true
+  fail_on_health_warn: false
+  min_healthy_clients: 1
+  network_baseline: false
+storage_type: file
+tags: {}
+test:
+  duration: 60
+  file_size: 1G
+  ramp_time: 0
+  warmup_time: 0
+tool: fio

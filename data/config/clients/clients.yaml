@@ -1,0 +1,24 @@
+clients:
+- agent_port: 8080
+  hostname: 10.64.25.62
+  id: rgw-client1
+  ssh_password: passwd
+  ssh_port: 22
+  ssh_user: root
+  tags: {}
+- agent_port: 8080
+  hostname: 10.64.25.58
+  id: rgw-client2
+  ssh_password: passwd
+  ssh_port: 22
+  ssh_user: root
+  tags: {}
+- agent_port: 8080
+  hostname: 10.64.24.171
+  id: rgw-client3
+  ssh_password: passwd
+  ssh_port: 22
+  ssh_user: root
+  tags: {}
+defaults:
+  ssh_user: root

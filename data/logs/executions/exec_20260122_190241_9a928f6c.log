@@ -1,0 +1,7 @@
+[2026-01-22T19:04:31.138563] FIO install failed on: ['rgw-client2', 'rgw-client3']
+[2026-01-22T19:06:20.120969] FIO issue on rgw-client2: FIO failed: Warning: Permanently added '10.64.25.58' (ECDSA) to the list of known hosts.
+bash: fio: command not found
+
+[2026-01-22T19:06:20.121268] FIO issue on rgw-client3: FIO failed: Warning: Permanently added '10.64.24.171' (ECDSA) to the list of known hosts.
+bash: fio: command not found
+

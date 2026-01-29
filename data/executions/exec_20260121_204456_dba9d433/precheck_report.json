@@ -1,0 +1,165 @@
+{
+  "execution_id": "exec_20260121_204456_dba9d433",
+  "started_at": "2026-01-21 20:44:57.015868",
+  "completed_at": "2026-01-21 20:45:23.836880",
+  "duration_seconds": 26.821012,
+  "overall_status": "failed",
+  "can_proceed": false,
+  "cluster_health": "UNKNOWN",
+  "cluster_checks": [
+    {
+      "name": "cluster_health",
+      "passed": false,
+      "severity": "critical",
+      "message": "Cluster health is UNKNOWN",
+      "details": {
+        "status": "UNKNOWN",
+        "checks": {}
+      },
+      "raw_output": null
+    },
+    {
+      "name": "osd_status",
+      "passed": true,
+      "severity": "info",
+      "message": "All 0 OSDs are up and in",
+      "details": {
+        "total": 0,
+        "up": 0,
+        "in": 0
+      },
+      "raw_output": null
+    },
+    {
+      "name": "mon_quorum",
+      "passed": true,
+      "severity": "info",
+      "message": "All 0 monitors in quorum",
+      "details": {
+        "quorum": []
+      },
+      "raw_output": null
+    },
+    {
+      "name": "pg_status",
+      "passed": true,
+      "severity": "info",
+      "message": "All 0 PGs are active+clean",
+      "details": {
+        "total_pgs": 0
+      },
+      "raw_output": null
+    },
+    {
+      "name": "capacity",
+      "passed": true,
+      "severity": "info",
+      "message": "Cluster capacity: 0.0% used",
+      "details": {
+        "total_tb": 0.0,
+        "used_percent": 0
+      },
+      "raw_output": null
+    },
+    {
+      "name": "mgr_status",
+      "passed": false,
+      "severity": "critical",
+      "message": "No active MGR daemon",
+      "details": {},
+      "raw_output": null
+    }
+  ],
+  "clients_total": 2,
+  "clients_online": 1,
+  "clients_offline": 1,
+  "client_results": [
+    {
+      "client_id": "rgw-client1",
+      "hostname": "10.64.25.62",
+      "ip_address": "10.64.25.62",
+      "status": "online",
+      "ssh_reachable": true,
+      "ssh_latency_ms": 5697.3717212677,
+      "agent_running": true,
+      "agent_version": "1.0.0",
+      "agent_pid": 46450,
+      "uptime_seconds": 906224,
+      "load_average": [
+        0.0,
+        0.01,
+        0.0
+      ],
+      "memory_total_gb": 1.6642341613769531,
+      "memory_available_gb": 1.1075897216796875,
+      "disk_space_gb": 8.346206665039062,
+      "tools_installed": {
+        "fio": false,
+        "iperf3": false,
+        "dd": true,
+        "iostat": false,
+        "ping": true
+      },
+      "storage_accessible": false,
+      "mount_points": [],
+      "network_to_storage_ms": null,
+      "errors": [],
+      "warnings": [
+        "Tool 'fio' not installed",
+        "Tool 'iperf3' not installed",
+        "Tool 'iostat' not installed"
+      ]
+    },
+    {
+      "client_id": "rgw-client2",
+      "hostname": "10.64.25.58",
+      "ip_address": "10.64.25.58",
+      "status": "error",
+      "ssh_reachable": true,
+      "ssh_latency_ms": 5683.252811431885,
+      "agent_running": false,
+      "agent_version": null,
+      "agent_pid": null,
+      "uptime_seconds": 905819,
+      "load_average": [
+        0.05,
+        0.03,
+        0.0
+      ],
+      "memory_total_gb": 1.6642379760742188,
+      "memory_available_gb": 1.1682052612304688,
+      "disk_space_gb": 8.571918487548828,
+      "tools_installed": {
+        "fio": false,
+        "iperf3": false,
+        "dd": true,
+        "iostat": false,
+        "ping": true
+      },
+      "storage_accessible": false,
+      "mount_points": [],
+      "network_to_storage_ms": null,
+      "errors": [
+        "Agent not running or not responding"
+      ],
+      "warnings": [
+        "Tool 'fio' not installed",
+        "Tool 'iperf3' not installed",
+        "Tool 'iostat' not installed"
+      ]
+    }
+  ],
+  "excluded_clients": [
+    "rgw-client2"
+  ],
+  "custom_command_results": [],
+  "network_baseline": null,
+  "warnings": [
+    "[Client] 10.64.25.58: error"
+  ],
+  "blocking_issues": [
+    "[Cluster] cluster_health: Cluster health is UNKNOWN",
+    "[Cluster] mgr_status: No active MGR daemon"
+  ],
+  "proceed_message": "Cannot proceed: 2 critical issue(s)"
+}

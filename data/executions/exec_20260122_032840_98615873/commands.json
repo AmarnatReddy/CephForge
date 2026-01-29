@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp": "2026-01-22T08:58:57.763183",
+    "client_id": "rgw-client1",
+    "command": "yum install -y ceph-common || dnf install -y ceph-common || apt-get install -y ceph-common",
+    "description": "Install ceph-common"
+  },
+  {
+    "timestamp": "2026-01-22T08:59:07.041645",
+    "client_id": "rgw-client1",
+    "command": "# FAILED: Failed to install ceph-common: Warning: Permanently added '10.64.25.62' (ECDSA) to the list of known hosts.\r\nError: Unable to find a match: ceph-common\nError: Unable to find a match: ceph-common\nbash: apt-get: command not found\n",
+    "description": "Install result"
+  },
+  {
+    "timestamp": "2026-01-22T08:59:20.930586",
+    "client_id": "rgw-client1",
+    "command": "SECRET=$(ceph-authtool /etc/ceph/ceph.client.admin.keyring -n client.admin -p 2>/dev/null || grep -A1 'client.admin' /etc/ceph/ceph.client.admin.keyring | grep key | awk '{{print $3}}') && mount -t ceph 10.64.66.198:6789,10.64.66.199:6789,10.64.66.200:6789:/ /mnt/scale_test -o name=admin,secret=$SECRET",
+    "description": "Mount cephfs filesystem"
+  },
+  {
+    "timestamp": "2026-01-22T08:59:27.887783",
+    "client_id": "rgw-client1",
+    "command": "mountpoint -q /mnt/scale_test",
+    "description": "Verify mount point"
+  },
+  {
+    "timestamp": "2026-01-22T08:59:34.868729",
+    "client_id": "rgw-client1",
+    "command": "fio --name=scale_test_rgw-client1 --directory=/mnt/scale_test --rw=rw --bs=4k --size=10G --numjobs=8 --iodepth=8 --runtime=60 --time_based --group_reporting --output-format=json --rwmixread=50 --direct=1 --ioengine=libaio --end_fsync=1",
+    "description": "Run FIO benchmark"
+  },
+  {
+    "timestamp": "2026-01-22T08:59:41.800732",
+    "client_id": "rgw-client1",
+    "command": "# FAILED: FIO failed: Warning: Permanently added '10.64.25.62' (ECDSA) to the list of known hosts.\r\nbash: fio: command not found\n",
+    "description": "FIO result"
+  }
+]

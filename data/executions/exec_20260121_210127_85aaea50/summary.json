@@ -1,0 +1,8 @@
+{
+  "execution_id": "exec_20260121_210127_85aaea50",
+  "completed_at": "2026-01-21T21:02:16.177495",
+  "total_samples": 30,
+  "clients": [
+    "rgw-client1"
+  ]
+}

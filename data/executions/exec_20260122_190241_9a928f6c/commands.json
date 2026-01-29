@@ -1,0 +1,98 @@
+[
+  {
+    "timestamp": "2026-01-23T00:34:17.777626",
+    "client_id": "rgw-client1",
+    "command": "which fio",
+    "description": "Check if FIO is installed"
+  },
+  {
+    "timestamp": "2026-01-23T00:34:17.786936",
+    "client_id": "rgw-client2",
+    "command": "which fio",
+    "description": "Check if FIO is installed"
+  },
+  {
+    "timestamp": "2026-01-23T00:34:17.795326",
+    "client_id": "rgw-client3",
+    "command": "which fio",
+    "description": "Check if FIO is installed"
+  },
+  {
+    "timestamp": "2026-01-23T00:34:24.090339",
+    "client_id": "rgw-client2",
+    "command": "yum install -y fio 2>/dev/null || dnf install -y fio 2>/dev/null || apt-get update && apt-get install -y fio 2>/dev/null || zypper install -y fio 2>/dev/null",
+    "description": "Install FIO"
+  },
+  {
+    "timestamp": "2026-01-23T00:34:24.106400",
+    "client_id": "rgw-client3",
+    "command": "yum install -y fio 2>/dev/null || dnf install -y fio 2>/dev/null || apt-get update && apt-get install -y fio 2>/dev/null || zypper install -y fio 2>/dev/null",
+    "description": "Install FIO"
+  },
+  {
+    "timestamp": "2026-01-23T00:34:31.128601",
+    "client_id": "rgw-client2",
+    "command": "# FAILED: Failed to install FIO: Warning: Permanently added '10.64.25.58' (ECDSA) to the list of known hosts.\r\nbash: apt-get: command not found\n",
+    "description": "Install FIO result"
+  },
+  {
+    "timestamp": "2026-01-23T00:34:31.137787",
+    "client_id": "rgw-client3",
+    "command": "# FAILED: Failed to install FIO: Warning: Permanently added '10.64.24.171' (ECDSA) to the list of known hosts.\r\nbash: apt-get: command not found\n",
+    "description": "Install FIO result"
+  },
+  {
+    "timestamp": "2026-01-23T00:34:31.139258",
+    "client_id": "rgw-client1",
+    "command": "cat > /etc/yum.repos.d/ceph.repo << 'EOF'\n[ceph]\nname=Ceph packages\nbaseurl=https://public.dhe.ibm.com/ibmdl/export/pub/storage/ceph/testing/IBM-CEPH-9.0-202512231612.ci.0/IBM-CEPH-9.0-202512231612.ci.0-rhel9.repo\nenabled=1\ngpgcheck=0\n\nEOF && yum install -y ceph-common || dnf install -y ceph-common || apt-get install -y ceph-common",
+    "description": "Install ceph-common"
+  },
+  {
+    "timestamp": "2026-01-23T00:34:37.451257",
+    "client_id": "rgw-client1",
+    "command": "# SUCCESS",
+    "description": "Install result"
+  },
+  {
+    "timestamp": "2026-01-23T00:34:50.160080",
+    "client_id": "rgw-client1",
+    "command": "SECRET=$(ceph-authtool /etc/ceph/ceph.client.admin.keyring -n client.admin -p 2>/dev/null || grep -A1 'client.admin' /etc/ceph/ceph.client.admin.keyring | grep key | awk '{{print $3}}') && mount -t ceph 10.64.66.198:6789,10.64.66.199:6789,10.64.66.200:6789:/ /mnt/scale_test -o name=admin,secret=$SECRET",
+    "description": "Mount cephfs filesystem"
+  },
+  {
+    "timestamp": "2026-01-23T00:34:56.534938",
+    "client_id": "rgw-client1",
+    "command": "mountpoint -q /mnt/scale_test",
+    "description": "Verify mount point"
+  },
+  {
+    "timestamp": "2026-01-23T00:35:02.935638",
+    "client_id": "rgw-client1",
+    "command": "fio --name=scale_test_rgw-client1 --directory=/mnt/scale_test --rw=randrw --bs=4m --size=1G --numjobs=12 --iodepth=1 --runtime=60 --time_based --group_reporting --output-format=json --rwmixread=50 --direct=1 --ioengine=libaio --end_fsync=1",
+    "description": "Run FIO benchmark"
+  },
+  {
+    "timestamp": "2026-01-23T00:35:02.951592",
+    "client_id": "rgw-client2",
+    "command": "fio --name=scale_test_rgw-client2 --directory=/mnt/scale_test --rw=randrw --bs=4m --size=1G --numjobs=12 --iodepth=1 --runtime=60 --time_based --group_reporting --output-format=json --rwmixread=50 --direct=1 --ioengine=libaio --end_fsync=1",
+    "description": "Run FIO benchmark"
+  },
+  {
+    "timestamp": "2026-01-23T00:35:02.963573",
+    "client_id": "rgw-client3",
+    "command": "fio --name=scale_test_rgw-client3 --directory=/mnt/scale_test --rw=randrw --bs=4m --size=1G --numjobs=12 --iodepth=1 --runtime=60 --time_based --group_reporting --output-format=json --rwmixread=50 --direct=1 --ioengine=libaio --end_fsync=1",
+    "description": "Run FIO benchmark"
+  },
+  {
+    "timestamp": "2026-01-23T00:35:09.330353",
+    "client_id": "rgw-client2",
+    "command": "# FAILED: FIO failed: Warning: Permanently added '10.64.25.58' (ECDSA) to the list of known hosts.\r\nbash: fio: command not found\n",
+    "description": "FIO result"
+  },
+  {
+    "timestamp": "2026-01-23T00:35:09.330963",
+    "client_id": "rgw-client3",
+    "command": "# FAILED: FIO failed: Warning: Permanently added '10.64.24.171' (ECDSA) to the list of known hosts.\r\nbash: fio: command not found\n",
+    "description": "FIO result"
+  }
+]

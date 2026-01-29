@@ -1,0 +1,40 @@
+# Sequential Write 1M Template
+# High throughput sequential write workload
+
+name: sequential_write_1m
+description: "1M sequential write workload - optimized for throughput measurement"
+
+cluster_name: ceph_example
+
+tool: fio
+
+io:
+  pattern: sequential
+  block_size: "1m"
+  read_percent: 0
+  write_percent: 100
+  io_depth: 16
+  num_jobs: 4
+  direct_io: true
+  verify_data: false
+
+test:
+  duration: 300
+  ramp_time: 30
+  file_size: "50G"
+  warmup_time: 0
+
+clients:
+  mode: all
+
+prechecks:
+  enabled: true
+  cluster_health: true
+  client_health: true
+  fail_on_health_warn: false
+  fail_on_health_err: true
+
+tags:
+  workload_type: "throughput"
+  access_pattern: "sequential"
+  io_type: "write"

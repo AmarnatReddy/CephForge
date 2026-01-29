@@ -1,0 +1,63 @@
+# Mixed Read/Write 70/30 Template
+# Realistic mixed workload simulation
+
+name: mixed_workload_70_30
+description: "70% read, 30% write mixed random workload - simulates database workloads"
+
+cluster_name: ceph_example
+
+tool: fio
+
+io:
+  pattern: random
+  block_size: "8k"
+  read_percent: 70
+  write_percent: 30
+  io_depth: 64
+  num_jobs: 8
+  direct_io: true
+  verify_data: false
+  sync_io: false
+
+test:
+  duration: 600
+  ramp_time: 60
+  file_size: "20G"
+  warmup_time: 30
+
+clients:
+  mode: all
+
+scaling:
+  enabled: false
+  mode: manual
+  min_clients: 1
+  max_clients: 50
+
+network:
+  profile: auto
+  run_iperf_baseline: true
+  adjust_io_params: true
+  apply_system_tuning: false
+
+prechecks:
+  enabled: true
+  cluster_health: true
+  client_health: true
+  network_baseline: true
+  fail_on_health_warn: false
+  fail_on_health_err: true
+  exclude_failed_clients: true
+  min_healthy_clients: 1
+  custom_commands:
+    - command: "ceph status"
+      description: "Get cluster status"
+      blocking: false
+    - command: "ceph osd pool ls"
+      description: "List pools"
+      blocking: false
+
+tags:
+  workload_type: "mixed"
+  access_pattern: "random"
+  simulation: "database"

@@ -1,0 +1,31 @@
+clients:
+  mode: all
+cluster_name: ceph_example
+description: 4K random read workload - optimized for IOPS measurement
+io:
+  block_size: 4k
+  direct_io: true
+  io_depth: 32
+  num_jobs: 8
+  pattern: random
+  read_percent: 100
+  verify_data: false
+  write_percent: 0
+name: random_read_4k
+prechecks:
+  client_health: true
+  cluster_health: true
+  enabled: true
+  fail_on_health_err: true
+  fail_on_health_warn: false
+  min_healthy_clients: 1
+tags:
+  access_pattern: random
+  io_type: read
+  workload_type: iops
+test:
+  duration: 300
+  file_size: 10G
+  ramp_time: 30
+  warmup_time: 0
+tool: fio

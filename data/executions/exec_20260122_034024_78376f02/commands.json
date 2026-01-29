@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2026-01-22T09:10:41.148466",
+    "client_id": "rgw-client1",
+    "command": "which fio",
+    "description": "Check if FIO is installed"
+  },
+  {
+    "timestamp": "2026-01-22T09:10:48.004959",
+    "client_id": "rgw-client1",
+    "command": "yum install -y fio 2>/dev/null || dnf install -y fio 2>/dev/null || apt-get update && apt-get install -y fio 2>/dev/null || zypper install -y fio 2>/dev/null",
+    "description": "Install FIO"
+  },
+  {
+    "timestamp": "2026-01-22T09:11:00.072482",
+    "client_id": "rgw-client1",
+    "command": "# FAILED: Failed to install FIO: Warning: Permanently added '10.64.25.62' (ECDSA) to the list of known hosts.\r\n",
+    "description": "Install FIO result"
+  },
+  {
+    "timestamp": "2026-01-22T09:11:00.085637",
+    "client_id": "rgw-client1",
+    "command": "fio --name=scale_test_rgw-client1 --directory=/mnt/scale_test --rw=rw --bs=4k --size=10G --numjobs=8 --iodepth=8 --runtime=60 --time_based --group_reporting --output-format=json --rwmixread=50 --direct=1 --ioengine=libaio --end_fsync=1",
+    "description": "Run FIO benchmark"
+  }
+]

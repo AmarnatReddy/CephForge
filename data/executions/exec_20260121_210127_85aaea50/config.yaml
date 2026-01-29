@@ -1,0 +1,34 @@
+clients:
+  client_ids: []
+  mode: all
+cluster_name: grim
+description: ''
+fio_extra_options: {}
+io:
+  block_size: 4k
+  direct_io: true
+  io_depth: 4
+  num_jobs: 8
+  pattern: mixed
+  read_percent: 50
+  sync_io: false
+  verify_data: false
+  write_percent: 50
+name: FS_mixed
+prechecks:
+  client_health: true
+  cluster_health: true
+  custom_commands: []
+  enabled: true
+  exclude_failed_clients: true
+  fail_on_health_err: true
+  fail_on_health_warn: false
+  min_healthy_clients: 1
+  network_baseline: false
+tags: {}
+test:
+  duration: 30
+  file_size: 10G
+  ramp_time: 0
+  warmup_time: 0
+tool: fio

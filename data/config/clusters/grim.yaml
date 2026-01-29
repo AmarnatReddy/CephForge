@@ -1,0 +1,20 @@
+backend: ceph_rbd
+ceph:
+  conf_path: /etc/ceph/ceph.conf
+  keyring_path: /etc/ceph/ceph.client.admin.keyring
+  monitors:
+  - 10.64.66.198:6789
+  - 10.64.66.199:6789
+  - 10.64.66.200:6789
+  pool: .mgr
+  repo_url: https://public.dhe.ibm.com/ibmdl/export/pub/storage/ceph/testing/IBM-CEPH-9.0-202512231612.ci.0/IBM-CEPH-9.0-202512231612.ci.0-rhel9.repo
+  user: admin
+description: grim
+installer_node:
+  host: 10.64.66.198
+  password: passwd
+  port: 22
+  username: root
+name: grim
+storage_type: block
+tags: {}

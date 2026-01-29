@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  # Redis for messaging
+  redis:
+    image: redis:7-alpine
+    container_name: scale_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+
+  # Manager service
+  manager:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.manager
+    container_name: scale_manager
+    ports:
+      - "8000:8000"
+    environment:
+      - SCALE_DATA_PATH=/data
+      - SCALE_REDIS_URL=redis://redis:6379
+      - SCALE_LOG_LEVEL=INFO
+    volumes:
+      - manager_data:/data
+      - ../data/config:/data/config:ro
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Agent service (for local testing)
+  agent:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.agent
+    container_name: scale_agent_local
+    ports:
+      - "8080:8080"
+    environment:
+      - SCALE_AGENT_ID=agent_local
+      - SCALE_AGENT_REDIS_URL=redis://redis:6379
+      - SCALE_AGENT_MANAGER_URL=http://manager:8000
+    volumes:
+      - agent_data:/tmp/scale_agent
+    depends_on:
+      - redis
+      - manager
+    profiles:
+      - agent
+
+volumes:
+  redis_data:
+  manager_data:
+  agent_data:
+
+networks:
+  default:
+    name: scale_network

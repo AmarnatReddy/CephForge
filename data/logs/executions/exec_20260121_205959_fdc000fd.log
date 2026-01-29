@@ -1,0 +1,1 @@
+[2026-01-21T21:00:26.386549] Execution failed: Prechecks failed: ['[Cluster] cluster_health: Cluster health is UNKNOWN', '[Cluster] mgr_status: No active MGR daemon']

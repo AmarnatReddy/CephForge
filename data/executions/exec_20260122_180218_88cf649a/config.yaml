@@ -1,0 +1,35 @@
+clients:
+  client_ids: []
+  mode: all
+cluster_name: grim
+description: fs2
+fio_extra_options: {}
+io:
+  block_size: 4m
+  direct_io: true
+  io_depth: 1
+  num_jobs: 12
+  pattern: random
+  read_percent: 50
+  sync_io: false
+  verify_data: false
+  write_percent: 50
+name: fs2
+prechecks:
+  client_health: true
+  cluster_health: true
+  custom_commands: []
+  enabled: true
+  exclude_failed_clients: true
+  fail_on_health_err: true
+  fail_on_health_warn: false
+  min_healthy_clients: 1
+  network_baseline: false
+storage_type: block
+tags: {}
+test:
+  duration: 60
+  file_size: 1G
+  ramp_time: 0
+  warmup_time: 0
+tool: fio

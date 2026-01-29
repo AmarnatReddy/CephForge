@@ -1,0 +1,12 @@
+{
+  "execution_id": "exec_20260122_194605_2d33fbcf",
+  "completed_at": "2026-01-22T19:51:21.655749",
+  "total_samples": 1,
+  "clients": [
+    "rgw-client1"
+  ],
+  "client_count": 1,
+  "peak_iops": 575,
+  "peak_throughput_mbps": 2302.775390625,
+  "avg_latency_us": 20818.487262846
+}

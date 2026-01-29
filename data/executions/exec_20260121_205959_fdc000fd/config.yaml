@@ -1,0 +1,30 @@
+clients:
+  mode: all
+cluster_name: ceph_example
+description: 1M sequential write workload - optimized for throughput measurement
+io:
+  block_size: 1m
+  direct_io: true
+  io_depth: 16
+  num_jobs: 4
+  pattern: sequential
+  read_percent: 0
+  verify_data: false
+  write_percent: 100
+name: sequential_write_1m
+prechecks:
+  client_health: true
+  cluster_health: true
+  enabled: true
+  fail_on_health_err: true
+  fail_on_health_warn: false
+tags:
+  access_pattern: sequential
+  io_type: write
+  workload_type: throughput
+test:
+  duration: 300
+  file_size: 50G
+  ramp_time: 30
+  warmup_time: 0
+tool: fio

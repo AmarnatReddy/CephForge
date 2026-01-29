@@ -1,0 +1,39 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install system dependencies and I/O tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    fio \
+    iperf3 \
+    sysstat \
+    iproute2 \
+    ethtool \
+    iputils-ping \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements first for better caching
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt psutil
+
+# Copy application code
+COPY common/ ./common/
+COPY agent/ ./agent/
+
+# Create work directory
+RUN mkdir -p /tmp/scale_agent
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV SCALE_AGENT_WORK_DIR=/tmp/scale_agent
+
+# Expose port
+EXPOSE 8080
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8080/health || exit 1
+
+# Run the application
+CMD ["python", "-m", "agent.main"]
